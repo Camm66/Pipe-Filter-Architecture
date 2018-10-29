@@ -41,7 +41,7 @@ public class Main
         // Set external text
         ArrayList<String> stopwords = getStopWords();
         removeStopWords.setStopwords(stopwords);
-        dataPump.setFilename("kjbible.txt");
+        dataPump.setFilename("text_files/kjbible.txt");
 
         // Begin Processing
         dataPump.run();
@@ -54,7 +54,7 @@ public class Main
 
 	private static ArrayList<String> getStopWords() throws IOException {
 		ArrayList<String> stopwords = new ArrayList<String>();
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("stopwords.txt")));
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("text_files/stopwords.txt")));
 		try {
 	    	String line;
 	    	while ((line = br.readLine()) != null) {
