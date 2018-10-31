@@ -1,8 +1,8 @@
 package CameronMorales.PipeFilter;
 
-public class FilterRemoveLowerCase extends Filter {
+public class FilterRemoveUpperCase extends Filter {
 
-	FilterRemoveLowerCase(Pipe _inputPipe, Pipe _outputPipe) {
+	FilterRemoveUpperCase(Pipe _inputPipe, Pipe _outputPipe) {
 		super(_inputPipe, _outputPipe);
 	}
 
@@ -15,7 +15,6 @@ public class FilterRemoveLowerCase extends Filter {
 				}
 			} else if(inputData == this.poisonPill) {
 				this.outputPipe.getInput(this.poisonPill);
-				System.out.println("Closing non lower");
 				break;
 			}
 		}

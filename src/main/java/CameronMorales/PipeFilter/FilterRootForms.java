@@ -4,7 +4,7 @@ import Algorithms.PorterStemmer;
 
 public class FilterRootForms extends Filter {
 
-	PorterStemmer stemmerAlgorithm = new PorterStemmer();
+	private PorterStemmer stemmerAlgorithm = new PorterStemmer();
 
 	FilterRootForms(Pipe _inputPipe, Pipe _outputPipe) {
 		super(_inputPipe, _outputPipe);
@@ -20,7 +20,6 @@ public class FilterRootForms extends Filter {
 				}
 			} else {
 				this.outputPipe.getInput(this.poisonPill);
-				System.out.println("Closing root forms");
 				break;
 			}
 		}

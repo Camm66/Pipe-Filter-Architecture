@@ -21,7 +21,7 @@ public class Main
 
         // Initialize Filters
         FilterRemoveNonAlpha removeNonAlpha = new FilterRemoveNonAlpha(pipeA, pipeB);
-        FilterRemoveLowerCase removeUpper = new FilterRemoveLowerCase(pipeB, pipeC);
+        FilterRemoveUpperCase removeUpper = new FilterRemoveUpperCase(pipeB, pipeC);
         FilterRemoveStopwords removeStopWords = new FilterRemoveStopwords(pipeC, pipeD);
         FilterRootForms getRootForms = new FilterRootForms(pipeD, pipeE);
 
@@ -30,7 +30,7 @@ public class Main
         DataSink dataSink = new DataSink(pipeE);
 
         // Set poison pill
-        String poisonPill = "ssofjsoijkjfihehqhih4928hh2h304h0idhsh4pl3";
+        String poisonPill = "ssofjsoijkjfihehqhih4928hh2h304h0idhsh4pl392hcn567cxxz013plfnam5870das";
         removeStopWords.setPoisonPill(poisonPill);
         removeNonAlpha.setPoisonPill(poisonPill);
         removeUpper.setPoisonPill(poisonPill);

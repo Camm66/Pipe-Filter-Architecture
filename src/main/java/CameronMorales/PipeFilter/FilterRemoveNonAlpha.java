@@ -17,7 +17,6 @@ public class FilterRemoveNonAlpha extends Filter {
 				}
 			} else if(inputData == this.poisonPill) {
 				this.outputPipe.getInput(this.poisonPill);
-				System.out.println("Closing non alpha");
 				break;
 			}
 		}

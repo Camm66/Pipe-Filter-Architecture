@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class DataPump implements Runnable {
-	Pipe outputPipe;
-	String poisonPill;
-	String filename;
+	private Pipe outputPipe;
+	private String poisonPill;
+	private String filename;
 
 	DataPump(Pipe _outputPipe){
 		this.outputPipe = _outputPipe;
@@ -31,7 +31,6 @@ public class DataPump implements Runnable {
 					this.outputPipe.getInput(line);
 				}
 				br.close();
-				System.out.println("Closing data pump");
 				this.outputPipe.getInput(this.poisonPill);
 				break;
 			}catch (IOException e){

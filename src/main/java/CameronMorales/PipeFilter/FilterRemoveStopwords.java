@@ -3,7 +3,7 @@ package CameronMorales.PipeFilter;
 import java.util.ArrayList;
 
 public class FilterRemoveStopwords extends Filter {
-	ArrayList<String> stopwords;
+	private ArrayList<String> stopwords;
 
 	FilterRemoveStopwords(Pipe _inputPipe, Pipe _outputPipe) {
 		super(_inputPipe, _outputPipe);
@@ -23,7 +23,6 @@ public class FilterRemoveStopwords extends Filter {
 				}
 			} else {
 				this.outputPipe.getInput(this.poisonPill);
-				System.out.println("Closing stopwords");
 				break;
 			}
 		}
