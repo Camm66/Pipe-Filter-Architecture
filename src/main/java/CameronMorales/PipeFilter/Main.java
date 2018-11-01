@@ -10,7 +10,9 @@ public class Main
 {
     public static void main( String[] args ) throws IOException
     {
-        System.out.println( "Running Pipe-Filter Configuration!");
+
+        System.out.println("Running Pipe-Filter Configuration!");
+        System.out.println("Start Time:  " + System.currentTimeMillis());
 
         // Initialize Pipes
         Pipe pipeA = new Pipe();
