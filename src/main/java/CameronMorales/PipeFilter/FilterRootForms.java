@@ -1,13 +1,17 @@
 package CameronMorales.PipeFilter;
 
-import Algorithms.PorterStemmer;
+import Algorithms.IPorterStemmer;
 
 public class FilterRootForms extends Filter {
 
-	private PorterStemmer stemmerAlgorithm = new PorterStemmer();
+	private IPorterStemmer stemmerAlgorithm;
 
 	FilterRootForms(Pipe _inputPipe, Pipe _outputPipe) {
 		super(_inputPipe, _outputPipe);
+	}
+
+	public void setAlgorithm(IPorterStemmer _algorithm){
+		this.stemmerAlgorithm = _algorithm;
 	}
 
 	public void run(){

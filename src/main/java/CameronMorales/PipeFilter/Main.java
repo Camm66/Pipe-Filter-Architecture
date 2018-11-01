@@ -6,13 +6,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import Algorithms.PorterStemmer;
+
 public class Main
 {
     public static void main( String[] args ) throws IOException
     {
 
         System.out.println("Running Pipe-Filter Configuration!");
-        System.out.println("Start Time:  " + System.currentTimeMillis());
+
+        String stopwordsFile = "text_files/stopwords.txt";
+        String textFile = "text_files/kjbible.txt";
 
         // Initialize Pipes
         Pipe pipeA = new Pipe();
@@ -40,10 +44,15 @@ public class Main
         dataPump.setPoisonPill(poisonPill);
         dataSink.setPoisonPill(poisonPill);
 
-        // Set external text
-        ArrayList<String> stopwords = getStopWords();
+        // Feed Stop Words to  FilterRemoveStopwords
+        ArrayList<String> stopwords = getStopWords(stopwordsFile);
         removeStopWords.setStopwords(stopwords);
-        dataPump.setFilename("text_files/kjbible.txt");
+
+        // Feed the text file being processed to the DataPump
+        dataPump.setFilename(textFile);
+
+        // Set the PorterStemmer algorithm
+        getRootForms.setAlgorithm(new PorterStemmer());
 
         // Begin Processing
         dataPump.run();
@@ -54,9 +63,9 @@ public class Main
         dataSink.run();
     }
 
-	private static ArrayList<String> getStopWords() throws IOException {
+	private static ArrayList<String> getStopWords(String _stopwords) throws IOException {
 		ArrayList<String> stopwords = new ArrayList<String>();
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("text_files/stopwords.txt")));
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(_stopwords)));
 		try {
 	    	String line;
 	    	while ((line = br.readLine()) != null) {
