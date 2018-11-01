@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Algorithms.PorterStemmer;
 
@@ -12,11 +13,17 @@ public class Main
 {
     public static void main( String[] args ) throws IOException
     {
+    	// Get the text file path from the user
+    	System.out.println("Enter path of the text file: ");
+    	Scanner scanner = new Scanner(System.in);
+    	String textFile = scanner.nextLine();
+    	scanner.close();
 
+    	// Set the stopwords file path
+    	String stopwordsFile = "text_files/stopwords.txt";
+
+    	System.out.println();
         System.out.println("Running Pipe-Filter Configuration!");
-
-        String stopwordsFile = "text_files/stopwords.txt";
-        String textFile = "text_files/kjbible.txt";
 
         // Initialize Pipes
         Pipe pipeA = new Pipe();
