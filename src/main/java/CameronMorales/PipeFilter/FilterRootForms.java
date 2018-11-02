@@ -15,18 +15,21 @@ public class FilterRootForms extends Filter {
 	}
 
 	public void run(){
+		System.out.println("Filter-RootForms Begins: " + System.currentTimeMillis());
+		System.out.println(this.poisonPill);
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData != this.poisonPill){
-				if(inputData != null){
+			if(this.poisonPill.equals(inputData))
+				break;
+			else if(inputData != "" && inputData != null){
 					String outputData = transformData(inputData);
 					this.outputPipe.getInput(outputData);
-				}
-			} else {
-				this.outputPipe.getInput(this.poisonPill);
-				break;
 			}
+			else
+				continue;
 		}
+		this.outputPipe.getInput(this.poisonPill);
+		System.out.println("Filter-RootForms Ends: " + System.currentTimeMillis());
 	}
 
 	private String transformData(String inputData) {

@@ -9,17 +9,20 @@ public class FilterRemoveNonAlpha extends Filter {
 	}
 
 	public void run(){
+		System.out.println("Filter-RemoveNonAlpha Begins: " + System.currentTimeMillis());
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData != this.poisonPill){
-				if(inputData != null){
+			if(inputData == null || inputData == "")
+				continue;
+			else if(inputData.equals(this.poisonPill)){
+				System.out.println(inputData);
+				break;}
+			else{
 					transformData(inputData);
-				}
-			} else if(inputData == this.poisonPill) {
-				this.outputPipe.getInput(this.poisonPill);
-				break;
 			}
 		}
+		this.outputPipe.getInput(this.poisonPill);
+		System.out.println("Filter-RemoveNonAlpha Ends: " + System.currentTimeMillis());
 	}
 
 	private void transformData(String inputData) {
@@ -28,7 +31,9 @@ public class FilterRemoveNonAlpha extends Filter {
 
 		for(int i = 0; i < data.length; i++){
 			if(!p.matcher(data[i]).find()){
-				this.outputPipe.getInput(data[i]);
+				boolean added = this.outputPipe.getInput(data[i]);
+				if(!added)
+					System.out.println("we have a queue problem");
 			}
 		}
 	}

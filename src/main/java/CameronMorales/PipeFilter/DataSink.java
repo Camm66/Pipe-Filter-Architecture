@@ -22,6 +22,7 @@ public class DataSink implements Runnable{
 	}
 
 	public void run(){
+		System.out.println("DataSink Begins: " + System.currentTimeMillis());
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
 			if(inputData != this.poisonPill){
@@ -29,6 +30,7 @@ public class DataSink implements Runnable{
 					transformData(inputData);
 				}
 			} else {
+				System.out.println("DataSink Ends: " + System.currentTimeMillis());
 				printResults();
 				break;
 			}
@@ -49,6 +51,8 @@ public class DataSink implements Runnable{
 	}
 
 	private void printResults() {
+		System.out.println("Process Ends: " + System.currentTimeMillis());
+		System.out.println();
 		SortedSet<Entry<String, Integer>> sortedItems = entriesSortedByValues(this.results);
 		Object[] items = sortedItems.toArray();
 		System.out.println("Top 10 words:");

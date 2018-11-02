@@ -7,8 +7,8 @@ public class Pipe {
 
 	Queue<String> inputQueue = new LinkedList<String>();
 
-	public void getInput(String inputData){
-		inputQueue.offer(inputData);
+	public boolean getInput(String inputData){
+		return inputQueue.offer(inputData);
 	}
 
 	public String sendOutput() {

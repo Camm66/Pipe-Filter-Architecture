@@ -7,17 +7,20 @@ public class FilterRemoveUpperCase extends Filter {
 	}
 
 	public void run(){
+		System.out.println("Filter-RemoveUpperCase Begins: " + System.currentTimeMillis());
+		System.out.println(this.poisonPill);
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData != this.poisonPill){
-				if(inputData != null){
-					transformData(inputData);
-				}
-			} else if(inputData == this.poisonPill) {
-				this.outputPipe.getInput(this.poisonPill);
+			if(this.poisonPill.equals(inputData))
 				break;
+			else if(inputData != "" && inputData != null){
+					transformData(inputData);
 			}
+			else
+				continue;
 		}
+		this.outputPipe.getInput(this.poisonPill);
+		System.out.println("Filter-RemoveUpperCase Ends: " + System.currentTimeMillis());
 	}
 
 	private void transformData(String inputData) {
