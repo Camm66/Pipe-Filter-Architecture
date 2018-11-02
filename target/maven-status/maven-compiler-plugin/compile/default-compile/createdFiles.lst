@@ -1,11 +1,11 @@
 CameronMorales\PipeFilter\Main.class
 CameronMorales\PipeFilter\DataSink$1.class
 CameronMorales\PipeFilter\FilterRemoveNonAlpha.class
-CameronMorales\PipeFilter\FilterRemoveStopwords.class
 Algorithms\PorterStemmer.class
-CameronMorales\PipeFilter\FilterRootForms.class
-CameronMorales\PipeFilter\Pipe.class
-CameronMorales\PipeFilter\DataPump.class
 CameronMorales\PipeFilter\FilterRemoveUpperCase.class
 CameronMorales\PipeFilter\DataSink.class
 CameronMorales\PipeFilter\Filter.class
+CameronMorales\PipeFilter\FilterRemoveStopwords.class
+CameronMorales\PipeFilter\FilterRootForms.class
+CameronMorales\PipeFilter\Pipe.class
+CameronMorales\PipeFilter\DataPump.class

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Algorithms.IPorterStemmer;
 import Algorithms.PorterStemmer;
 
 public class Main
@@ -17,10 +18,40 @@ public class Main
     	System.out.println("Enter path of the text file: ");
     	Scanner scanner = new Scanner(System.in);
     	String textFile = scanner.nextLine();
+
+    	//Get the language selection
+    	System.out.println("Select the language to process: ");
+    	String options = "\nAvailable Languages: "
+				+ "\n   1            - English"
+				+ "\n   2            - French"
+				+ "\n   3            - German"
+				+ "\n   Enter        - Default(English).\n\n";
+		System.out.println(options);
+    	String languageChoice = scanner.nextLine();
     	scanner.close();
 
-    	// Set the stopwords file path
-    	String stopwordsFile = "text_files/stopwords.txt";
+    	// Configure the appropriate stopwords.txt file and PorterStemmer Algorithm
+    	IPorterStemmer porterStemmer;
+    	String stopwordsFile;
+    	if(languageChoice.equals("1")){
+    		stopwordsFile = "text_files/stopwords.txt";
+        	porterStemmer= new PorterStemmer();
+    	}
+    	else if(languageChoice.equals("2")){
+    		stopwordsFile = "text_files/stopwords_French.txt";
+    		porterStemmer= new FrenchPorterStemmer();
+    	}
+    	else if(languageChoice.equals("2")){
+    		stopwordsFile = "text_files/stopwords_German.txt";
+    		porterStemmer= new GermanPorterStemmer();
+
+    	}
+    	else{
+    		stopwordsFile = "text_files/stopwords.txt";
+        	porterStemmer= new PorterStemmer();
+    	}
+
+
 
     	System.out.println();
         System.out.println("Running Pipe-Filter Configuration!");
@@ -59,7 +90,7 @@ public class Main
         dataPump.setFilename(textFile);
 
         // Set the PorterStemmer algorithm
-        getRootForms.setAlgorithm(new PorterStemmer());
+        getRootForms.setAlgorithm(porterStemmer);
 
         // Begin Processing
         dataPump.run();
