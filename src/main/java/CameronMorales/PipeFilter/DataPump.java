@@ -23,20 +23,17 @@ public class DataPump implements Runnable {
 	}
 
 	public void run(){
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
 		System.out.println("DataPump Begins: " + System.currentTimeMillis());
 		while(true){
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException ignore) {
+			}
 			try {
 				String line;
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(this.filename)));
 				while ((line = br.readLine()) != null){
-					boolean added = this.outputPipe.getInput(line);
-					if(!added)
-						System.out.println("we have a queue problem");
+					this.outputPipe.getInput(line);
 				}
 				br.close();
 				break;

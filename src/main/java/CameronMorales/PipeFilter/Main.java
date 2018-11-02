@@ -18,7 +18,7 @@ public class Main
     	//Scanner scanner = new Scanner(System.in);
     	//String textFile = scanner.nextLine();
     	//scanner.close();
-    	String textFile = "text_files/kjbible.txt";
+    	String textFile = "text_files/test.txt";
     	// Set the stopwords file path
     	String stopwordsFile = "text_files/stopwords.txt";
 

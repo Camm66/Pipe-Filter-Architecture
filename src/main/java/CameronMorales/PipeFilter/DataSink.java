@@ -24,6 +24,10 @@ public class DataSink implements Runnable{
 	public void run(){
 		System.out.println("DataSink Begins: " + System.currentTimeMillis());
 		while(true){
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException ignore) {
+			}
 			String inputData = this.inputPipe.sendOutput();
 			if(inputData != this.poisonPill){
 				if(inputData != null){

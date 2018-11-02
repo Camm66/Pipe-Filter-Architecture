@@ -16,7 +16,6 @@ public class FilterRootForms extends Filter {
 
 	public void run(){
 		System.out.println("Filter-RootForms Begins: " + System.currentTimeMillis());
-		System.out.println(this.poisonPill);
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
 			if(this.poisonPill.equals(inputData))

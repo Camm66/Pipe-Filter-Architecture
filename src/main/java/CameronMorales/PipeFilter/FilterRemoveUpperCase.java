@@ -8,7 +8,6 @@ public class FilterRemoveUpperCase extends Filter {
 
 	public void run(){
 		System.out.println("Filter-RemoveUpperCase Begins: " + System.currentTimeMillis());
-		System.out.println(this.poisonPill);
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
 			if(this.poisonPill.equals(inputData))

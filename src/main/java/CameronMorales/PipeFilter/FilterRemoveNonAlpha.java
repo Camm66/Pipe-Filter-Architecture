@@ -12,11 +12,10 @@ public class FilterRemoveNonAlpha extends Filter {
 		System.out.println("Filter-RemoveNonAlpha Begins: " + System.currentTimeMillis());
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData == null || inputData == "")
+			if(inputData == null)
 				continue;
-			else if(inputData.equals(this.poisonPill)){
-				System.out.println(inputData);
-				break;}
+			else if(inputData.equals(this.poisonPill))
+				break;
 			else{
 					transformData(inputData);
 			}
@@ -31,9 +30,7 @@ public class FilterRemoveNonAlpha extends Filter {
 
 		for(int i = 0; i < data.length; i++){
 			if(!p.matcher(data[i]).find()){
-				boolean added = this.outputPipe.getInput(data[i]);
-				if(!added)
-					System.out.println("we have a queue problem");
+				this.outputPipe.getInput(data[i]);
 			}
 		}
 	}
