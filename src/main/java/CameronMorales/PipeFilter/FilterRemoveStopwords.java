@@ -16,19 +16,16 @@ public class FilterRemoveStopwords extends Filter {
 	public void run(){
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData != this.poisonPill){
-				if(inputData != null){
-					String outputData = transformData(inputData);
-					this.outputPipe.getInput(outputData);
-				}
-			} else {
+			if(inputData == this.poisonPill){
 				this.outputPipe.getInput(this.poisonPill);
 				break;
+			} else if(inputData != null && inputData != "") {
+				transformData(inputData);
 			}
 		}
 	}
 
-	private String transformData(String inputData) {
+	private void transformData(String inputData) {
 		String transformedData = "";
 		String[] data = inputData.split(" ");
 		for(int i = 0; i < data.length; i++){
@@ -36,6 +33,6 @@ public class FilterRemoveStopwords extends Filter {
 				transformedData += (data[i] + " ");
 			}
 		}
-		return transformedData;
+		 this.outputPipe.getInput(transformedData);
 	}
 }

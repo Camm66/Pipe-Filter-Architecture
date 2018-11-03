@@ -7,11 +7,19 @@ public class Pipe {
 
 	Queue<String> inputQueue = new LinkedList<String>();
 
-	public void getInput(String inputData){
+	public synchronized void getInput(String inputData){
 		inputQueue.offer(inputData);
+		notify();
 	}
 
-	public String sendOutput() {
+	public synchronized String sendOutput() {
+		while(this.inputQueue.isEmpty()){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				System.out.println("Pipe blocking failure!");
+			}
+		}
 		return inputQueue.poll();
 	}
 }

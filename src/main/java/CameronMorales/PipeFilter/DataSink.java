@@ -51,9 +51,13 @@ public class DataSink implements Runnable{
 	private void printResults() {
 		SortedSet<Entry<String, Integer>> sortedItems = entriesSortedByValues(this.results);
 		Object[] items = sortedItems.toArray();
-		System.out.println("Top 10 words:");
-		for(int i = 0; i < 10; i++){
-			System.out.println(items[i]);
+		if(items.length < 10){
+			System.out.println("I need more words!");
+		} else {
+			System.out.println("Top 10 words:");
+			for(int i = 0; i < 10; i++){
+				System.out.println(items[i]);
+			}
 		}
 	}
 

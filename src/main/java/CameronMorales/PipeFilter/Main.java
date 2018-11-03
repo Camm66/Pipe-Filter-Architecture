@@ -62,12 +62,19 @@ public class Main
         getRootForms.setAlgorithm(new PorterStemmer());
 
         // Begin Processing
-        dataPump.run();
-        removeNonAlpha.run();
-        removeUpper.run();
-        removeStopWords.run();
-        getRootForms.run();
-        dataSink.run();
+        Thread a = new Thread(dataPump);
+        Thread b = new Thread(removeNonAlpha);
+        Thread c = new Thread(removeUpper);
+        Thread d = new Thread(removeStopWords);
+        Thread e = new Thread(getRootForms);
+        Thread f = new Thread(dataSink);
+
+        a.start();
+        b.start();
+        c.start();
+        d.start();
+        e.start();
+        f.start();
     }
 
 	private static ArrayList<String> getStopWords(String _stopwords) throws IOException {

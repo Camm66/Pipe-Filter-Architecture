@@ -31,11 +31,13 @@ public class DataPump implements Runnable {
 					this.outputPipe.getInput(line);
 				}
 				br.close();
-				this.outputPipe.getInput(this.poisonPill);
 				break;
 			}catch (IOException e){
 				System.out.println("Input file not found!");
+				break;
+
 			}
 		}
+		this.outputPipe.getInput(this.poisonPill);
 	}
 }

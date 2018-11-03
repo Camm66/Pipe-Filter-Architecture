@@ -9,13 +9,11 @@ public class FilterRemoveUpperCase extends Filter {
 	public void run(){
 		while(true){
 			String inputData = this.inputPipe.sendOutput();
-			if(inputData != this.poisonPill){
-				if(inputData != null){
-					transformData(inputData);
-				}
-			} else if(inputData == this.poisonPill) {
+			if(inputData == this.poisonPill){
 				this.outputPipe.getInput(this.poisonPill);
 				break;
+			} else if(inputData != null && inputData != "") {
+				transformData(inputData);
 			}
 		}
 	}
