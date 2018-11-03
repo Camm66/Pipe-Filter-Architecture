@@ -27,11 +27,15 @@ public class FilterRootForms extends Filter {
 	}
 
 	private void transformData(String inputData) {
-		char[] word = inputData.toCharArray();
-		stemmerAlgorithm.add(word, word.length);
-		stemmerAlgorithm.stem();
-		String outputData = stemmerAlgorithm.toString();
-		this.outputPipe.getInput(outputData);
+		String[] data = inputData.split(" ");
+		String transformedData = "";
+		for(int i = 0; i < data.length; i++){
+			char[] word = inputData.toCharArray();
+			stemmerAlgorithm.add(word, word.length);
+			stemmerAlgorithm.stem();
+		    transformedData += stemmerAlgorithm.toString() + " ";
+		}
+		this.outputPipe.getInput(transformedData);
 	}
 
 

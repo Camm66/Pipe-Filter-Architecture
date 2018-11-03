@@ -1,7 +1,5 @@
 package CameronMorales.PipeFilter;
 
-import java.util.regex.Pattern;
-
 public class FilterRemoveNonAlpha extends Filter {
 
 	FilterRemoveNonAlpha(Pipe _inputPipe, Pipe _outputPipe) {
@@ -21,13 +19,11 @@ public class FilterRemoveNonAlpha extends Filter {
 	}
 
 	private void transformData(String inputData) {
-		Pattern p = Pattern.compile("[^a-zA-Z]");
 		String[] data = inputData.split(" ");
-
+		String transformedData = "";
 		for(int i = 0; i < data.length; i++){
-			if(!p.matcher(data[i]).find()){
-				this.outputPipe.getInput(data[i]);
+				transformedData = data[i].replaceAll("[^a-zA-Z]", "") + " ";
 			}
-		}
+		this.outputPipe.getInput(transformedData);
 	}
 }
