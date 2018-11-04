@@ -12,18 +12,13 @@ public class FilterRemoveNonAlpha extends Filter {
 			if(inputData == this.poisonPill){
 				this.outputPipe.getInput(this.poisonPill);
 				break;
-			} else if(inputData != null && inputData != "") {
+			} else if(inputData != null && !inputData.equals("")) {
 				transformData(inputData);
 			}
 		}
 	}
 
 	private void transformData(String inputData) {
-		String[] data = inputData.split(" ");
-		String transformedData = "";
-		for(int i = 0; i < data.length; i++){
-				transformedData = data[i].replaceAll("[^a-zA-Z]", "") + " ";
-			}
-		this.outputPipe.getInput(transformedData);
+		this.outputPipe.getInput(inputData.replaceAll("[^a-zA-Z\\s]", ""));
 	}
 }

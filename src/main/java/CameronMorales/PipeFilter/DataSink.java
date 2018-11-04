@@ -36,15 +36,15 @@ public class DataSink implements Runnable{
 	}
 
 	private void transformData(String inputData) {
-		if(inputData != null && !inputData.isEmpty()){
-			String[] data = inputData.split(" ");
-			for(int i = 0; i < data.length; i++){
-				if(this.results.containsKey(data[i])){
-					Integer newValue = this.results.get(data[i]) + 1;
-					this.results.replace(data[i], newValue);
-				} else
-					this.results.put(data[i], 1);
-			}
+		String[] data = inputData.split(" ");
+		for(int i = 0; i < data.length; i++){
+			if(!data[i].equals("")){
+			if(this.results.containsKey(data[i])){
+				Integer newValue = this.results.get(data[i]) + 1;
+				this.results.replace(data[i], newValue);
+			} else
+				this.results.put(data[i], 1);
+		}
 		}
 	}
 

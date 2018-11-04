@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import Algorithms.PorterStemmer;
@@ -52,7 +52,7 @@ public class Main
         dataSink.setPoisonPill(poisonPill);
 
         // Feed Stop Words to  FilterRemoveStopwords
-        ArrayList<String> stopwords = getStopWords(stopwordsFile);
+        HashSet<String> stopwords = getStopWords(stopwordsFile);
         removeStopWords.setStopwords(stopwords);
 
         // Feed the text file being processed to the DataPump
@@ -77,8 +77,8 @@ public class Main
         f.start();
     }
 
-	private static ArrayList<String> getStopWords(String _stopwords) throws IOException {
-		ArrayList<String> stopwords = new ArrayList<String>();
+	private static HashSet<String> getStopWords(String _stopwords) throws IOException {
+		HashSet<String> stopwords = new HashSet<String>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(_stopwords)));
 		try {
 	    	String line;

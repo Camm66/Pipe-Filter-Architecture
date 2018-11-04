@@ -1,15 +1,15 @@
 package CameronMorales.PipeFilter;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class FilterRemoveStopwords extends Filter {
-	private ArrayList<String> stopwords;
+	private HashSet<String> stopwords;
 
 	FilterRemoveStopwords(Pipe _inputPipe, Pipe _outputPipe) {
 		super(_inputPipe, _outputPipe);
 	}
 
-	public void setStopwords(ArrayList<String> _stopwords){
+	public void setStopwords(HashSet<String> _stopwords){
 		this.stopwords = _stopwords;
 	}
 
@@ -19,7 +19,7 @@ public class FilterRemoveStopwords extends Filter {
 			if(inputData == this.poisonPill){
 				this.outputPipe.getInput(this.poisonPill);
 				break;
-			} else if(inputData != null && inputData != "") {
+			} else if(inputData != null && !inputData.equals("")) {
 				transformData(inputData);
 			}
 		}

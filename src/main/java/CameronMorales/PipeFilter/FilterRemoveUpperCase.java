@@ -12,7 +12,7 @@ public class FilterRemoveUpperCase extends Filter {
 			if(inputData == this.poisonPill){
 				this.outputPipe.getInput(this.poisonPill);
 				break;
-			} else if(inputData != null && inputData != "") {
+			} else if(inputData != null && !inputData.equals("")) {
 				transformData(inputData);
 			}
 		}
